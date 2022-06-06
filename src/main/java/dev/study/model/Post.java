@@ -25,18 +25,18 @@ import lombok.ToString;
 @Setter @Getter
 @ToString
 @Entity
-public class Note {
+public class Post {
 	
 	@Id
-	@Column(name="note_id")
+	@Column(name="post_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int noteId;
-	@Column(name="note_title",nullable=false)
-	private String noteTitle;
-	@Column(name="note_description",nullable=false)
-	private String noteDescription;
-	@Column(name="note_date",nullable=false)
-	private LocalDate noteDate;
+	private int postId;
+	@Column(name="post_title",nullable=false)
+	private String postTitle;
+	@Column(name="post_description",nullable=false)
+	private String postDescription;
+	@Column(name="post_date",nullable=false)
+	private LocalDate postDate;
 	@Column(name="is_release",nullable=false)
 	private boolean isrelease;
 	
