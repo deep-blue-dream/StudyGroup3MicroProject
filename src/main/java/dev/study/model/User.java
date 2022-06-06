@@ -39,7 +39,7 @@ public class User {
 	private LocalDate userMail;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-	private List<Note> note = new ArrayList<>();
+	private List<Post> post = new ArrayList<>();
 	
 	
 }
