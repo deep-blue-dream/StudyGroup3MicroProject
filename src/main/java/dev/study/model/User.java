@@ -36,7 +36,7 @@ public class User {
 	@Column(name="user_pw",nullable=false)
 	private String userPassWord;
 	@Column(name="user_mail",nullable=false)
-	private LocalDate userMail;
+	private String userMail;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private List<UserPost> userpost = new ArrayList<>();
