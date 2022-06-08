@@ -14,7 +14,7 @@ import java.util.List;
 @Slf4j
 public class UserServiceImpl implements UserService{
 
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
