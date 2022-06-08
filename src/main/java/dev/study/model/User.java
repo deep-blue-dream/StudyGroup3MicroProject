@@ -1,6 +1,4 @@
 package dev.study.model;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,29 +15,43 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Setter @Getter
-@ToString
 @Entity
 public class User {
 
 	@Id
-	@Column(name="user_id")
+	@Column(name="user_index")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int userId;
+	private Long userIndex;
+	
+	@Column(name="user_id")
+	private String userId;
 	@Column(name="user_name",nullable=false)
 	private String userName;
 	@Column(name="user_pw",nullable=false)
 	private String userPassWord;
 	@Column(name="user_mail",nullable=false)
-	private LocalDate userMail;
+	private String userMail;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-	private List<Post> post = new ArrayList<>();
-	
-	
+	private List<UserPost> userpost = new ArrayList<>();
+
+	@Override
+	public String toString() {
+		String result = "User{" +
+				"userIndex=" + userIndex +
+				", userId='" + userId + '\'' +
+				", userName='" + userName + '\'' +
+				", userPassWord='" + userPassWord + '\'' +
+				", userMail='" + userMail + '\'' +
+				'}';
+
+
+		return result;
+
+	}
 }
