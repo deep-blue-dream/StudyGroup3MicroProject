@@ -11,10 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dev.study.model.User;
 import dev.study.repository.UserRepository;
 
-import java.util.List;
+
 
 
 @Service
@@ -54,25 +53,25 @@ public class UserServiceImpl implements UserService{
 			newUser.setUserName(user.getUserName());
 			newUser.setUserMail(user.getUserMail());
 			newUser.setUserPassWord(user.getUserPassWord());
-			
+
 			repository.save(newUser);
 		});
-			
-	
-		
+
+
+
 		return repository.findAll();
 	}
 
 	@Override
 	public List<User> delete(Long userId) {
 		final Optional<User> foundTodo = repository.findById(userId);
-				
+
 		foundTodo.ifPresent(user->{
 			repository.delete(user);
-		
+
 		});
 		return repository.findAll();
-	
+
 	}
 	
 }
