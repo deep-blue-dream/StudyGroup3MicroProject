@@ -23,7 +23,6 @@ import lombok.ToString;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Setter @Getter
-@ToString
 @Entity
 public class User {
 
@@ -43,5 +42,18 @@ public class User {
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private List<UserPost> userpost = new ArrayList<>();
-	
+
+	@Override
+	public String toString() {
+		String result = "User{" +
+				"userIndex=" + userIndex +
+				", userId='" + userId + '\'' +
+				", userName='" + userName + '\'' +
+				", userPassWord='" + userPassWord + '\'' +
+				", userMail='" + userMail + '\'' +
+				'}';
+
+		return result;
+
+	}
 }

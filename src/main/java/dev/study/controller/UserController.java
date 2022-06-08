@@ -30,11 +30,15 @@ public class UserController {
 		return userService.findAll();
 	}
 	
-	@PostMapping
+	@PostMapping("/signup")
 	public User save(@RequestBody User user) {
-		System.out.println(user);
 		return userService.save(user);
 		
+	}
+	@PostMapping("/login")
+	public String login(@RequestBody User user){
+		return userService.login(user.getUserId(),user.getUserPassWord());
+
 	}
 		
 	@PutMapping

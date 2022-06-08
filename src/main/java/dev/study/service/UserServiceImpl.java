@@ -73,7 +73,18 @@ public class UserServiceImpl implements UserService{
 		return repository.findAll();
 
 	}
-	
+
+	@Override
+	public String login(String userId, String userPassWord) {
+		User user = repository.findUserByUserIdAndUserPassWord(userId, userPassWord);
+		if(user !=null){
+			return user.toString();
+		}else{
+			log.error("login failed");
+			return "아이디나 비밀번호가 틀렸습니다";
+		}
+	}
+
 }
 
 

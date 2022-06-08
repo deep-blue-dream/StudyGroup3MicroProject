@@ -2,9 +2,8 @@ package dev.study.service;
 
 import java.util.List;
 
-import dev.study.model.Post;
 import dev.study.model.User;
-import dev.study.model.UserPost;
+
 
 public interface UserService {
 
@@ -15,6 +14,7 @@ public interface UserService {
 	List<User> update(User todo);
 
 	List<User> delete(Long userId);
-	
 
+
+    String login(String userId, String userPassWord);
 }
