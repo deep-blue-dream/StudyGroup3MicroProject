@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import javax.persistence.*;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,11 +46,15 @@ public class Post {
 	private LocalDate postDate;
 	@Column(name="is_release",nullable=false)
 	private boolean isrelease;
-	
+
 //	@OneToMany(fetch = FetchType.LAZY, targetEntity = User.class)
 //	@JoinColumn(name="user_id")
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "post")
 	private List<UserPost> user = new ArrayList<>();
+
+
+
+
 	
 	
 }

@@ -27,3 +27,5 @@ public class UserPost {
     @JoinColumn(name="post_id")
     private Post post;
 }
+
+
