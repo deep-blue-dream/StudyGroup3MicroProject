@@ -1,6 +1,4 @@
 package dev.study.model;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +15,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Builder
 @RequiredArgsConstructor
@@ -52,6 +49,7 @@ public class User {
 				", userPassWord='" + userPassWord + '\'' +
 				", userMail='" + userMail + '\'' +
 				'}';
+
 
 		return result;
 
