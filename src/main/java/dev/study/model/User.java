@@ -28,9 +28,12 @@ import lombok.ToString;
 public class User {
 
 	@Id
-	@Column(name="user_id")
+	@Column(name="user_index")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int userId;
+	private Long userIndex;
+	
+	@Column(name="user_id")
+	private String userId;
 	@Column(name="user_name",nullable=false)
 	private String userName;
 	@Column(name="user_pw",nullable=false)
@@ -40,6 +43,5 @@ public class User {
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private List<UserPost> userpost = new ArrayList<>();
-	
 	
 }

@@ -18,12 +18,14 @@ public class UserPost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
-    @JoinColumn(name="user_id")
+    @ManyToOne(fetch = FetchType.LAZY)//, targetEntity = User.class)
+    @JoinColumn(name="user_index")
     private User user;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
+    @ManyToOne(fetch = FetchType.LAZY)//, targetEntity = User.class)
     @JoinColumn(name="post_id")
-    private  Post post;
+    private Post post;
 }
+
+
