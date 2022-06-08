@@ -16,11 +16,11 @@ public class UserServiceImpl implements UserService{
 
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserRepository repository;
 
 	@Override
 	public List<User> findAll() {
-		return userRepository.findAll();
+		return repository.findAll();
 	}
 
 	@Override
@@ -30,10 +30,10 @@ public class UserServiceImpl implements UserService{
 		}
 		final String email = user.getUserMail();
 		System.out.println(email);
-		if(userRepository.existsUserByUserMail(email)){
+		if(repository.existsUserByUserMail(email)){
 			log.warn("Email already exist >> {}", email);
 			throw new RuntimeException("Email already exists");
 		}
-		return userRepository.save(user);
+		return repository.save(user);
 	}
 }
