@@ -1,6 +1,8 @@
 package dev.study.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,24 +28,25 @@ import lombok.ToString;
 @Setter @Getter
 @ToString
 @Entity
-public class Note {
+public class Post {
 	
 	@Id
-	@Column(name="note_id")
+	@Column(name="post_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int noteId;
-	@Column(name="note_title",nullable=false)
-	private String noteTitle;
-	@Column(name="note_description",nullable=false)
-	private String noteDescription;
-	@Column(name="note_date",nullable=false)
-	private LocalDate noteDate;
+	private Long postId;
+	@Column(name="post_title",nullable=false)
+	private String postTitle;
+	@Column(name="post_description",nullable=false)
+	private String postDescription;
+	@Column(name="post_date",nullable=false)
+	private LocalDate postDate;
 	@Column(name="is_release",nullable=false)
 	private boolean isrelease;
 	
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
-	@JoinColumn(name="user_id")
-	private User user;
+//	@OneToMany(fetch = FetchType.LAZY, targetEntity = User.class)
+//	@JoinColumn(name="user_id")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "post")
+	private List<UserPost> user = new ArrayList<>();
 	
 	
 }

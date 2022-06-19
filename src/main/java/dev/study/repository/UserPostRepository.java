@@ -3,9 +3,10 @@ package dev.study.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import dev.study.model.Note;
+import dev.study.model.UserPost;
+
 
 @Repository
-public interface StudyRepository extends JpaRepository<Note, Long>{// <Entity, PK type>
-
+public interface UserPostRepository extends JpaRepository<UserPost, Long>{
+	
 }
