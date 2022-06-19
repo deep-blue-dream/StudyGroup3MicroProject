@@ -2,7 +2,9 @@ package dev.study.service;
 
 import java.util.List;
 
+import dev.study.DTO.UserDTO;
 import dev.study.model.User;
+import org.springframework.http.ResponseEntity;
 
 
 public interface UserService {
@@ -16,5 +18,5 @@ public interface UserService {
 	List<User> delete(Long userId);
 
 
-    String login(String userId, String userPassWord);
+    User login(UserDTO userDTO);
 }

@@ -11,11 +11,11 @@ import dev.study.model.UserPost;
 import dev.study.service.UserPostService;
 @RequestMapping("api/users")
 public class UserPostController {
-	
+
 	@Autowired // 필드를 통한 인젝션(주입, DI)
 	private UserPostService userPostService;
-	
-	
+
+
 //	@PostMapping
 //	public UserPost save(@RequestParam("userId") Long userId, @RequestParam("postId") Long postId){
 //		userPostService.
@@ -24,7 +24,7 @@ public class UserPostController {
 //		System.out.println(userPost);
 //		return userPostService.save(userPost);
 //	}
-	
+
 ////	@GetMapping(value = "/uploadPosting")
 //	@GetMapping
 //	public void uploadPosting(@RequestParam("id") Long index, @RequestParam("post") String post,

@@ -1,5 +1,6 @@
 package dev.study.service;
 
+import dev.study.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import dev.study.model.UserPost;

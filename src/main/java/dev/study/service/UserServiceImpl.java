@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Optional;
 
 
+import dev.study.DTO.UserDTO;
+import dev.study.controller.UserPostController;
 import dev.study.model.User;
+import dev.study.model.UserPost;
+import dev.study.repository.UserPostRepository;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +27,10 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
 	private UserRepository repository;
+	User user;
+
+	@Autowired
+	private UserPostRepository userPostRepository;
 
 	@Override
 	public List<User> findAll() {
@@ -32,16 +40,51 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User save(User user) {
-		if(user == null || user.getUserMail() == null || user.getUserName() == null || user.getUserPassWord()==null){
-			throw new RuntimeException("Invalid arguments");
+		final String userEmail = user.getUserMail();
+		final String userPassword = user.getUserPassWord();
+		final String userId = user.getUserId();
+		final String userName = user.getUserName();
+		try{
+			userEmailIsNull(userEmail);
+			userPasswordIsNull(userPassword);
+			userIdIsNull(userId);
+			if(userName == null ) {
+				log.error("userName is null");
+				throw new RuntimeException("invalid userName");
+			}
+			if(repository.existsUserByUserId(userId)){
+				log.warn("userId already exist >> {}", userEmail);
+				throw new RuntimeException("userId already exists");
+			}
+			if(repository.existsUserByUserMail(userEmail)){
+				log.warn("Email already exist >> {}", userEmail);
+				throw new RuntimeException("Email already exists");
+			}
+		}catch (RuntimeException e){
+			throw new RuntimeException(e.getMessage());
 		}
-		final String email = user.getUserMail();
-		System.out.println(email);
-		if(repository.existsUserByUserMail(email)){
-			log.warn("Email already exist >> {}", email);
-			throw new RuntimeException("Email already exists");
-		}
+
+
 		return repository.save(user);
+	}
+
+	@Override
+	public User login(UserDTO userDTO) {
+		User user;
+		final String userPassword = userDTO.getUserPassword();
+		final String userId = userDTO.getUserId();
+		try{
+			userPasswordIsNull(userPassword);
+			userIdIsNull(userId);
+			if( repository.findUserByUserIdAndUserPassWord(userId, userPassword) == null){
+				throw new RuntimeException("login failed");
+			}
+			user = repository.findUserByUserId(userId);
+		}catch (RuntimeException e){
+			throw new RuntimeException(e.getMessage());
+		}
+		return user;
+
 	}
 
 	@Override
@@ -73,15 +116,22 @@ public class UserServiceImpl implements UserService{
 		return repository.findAll();
 
 	}
-
-	@Override
-	public String login(String userId, String userPassWord) {
-		User user = repository.findUserByUserIdAndUserPassWord(userId, userPassWord);
-		if(user !=null){
-			return user.toString();
-		}else{
-			log.error("login failed");
-			return "아이디나 비밀번호가 틀렸습니다";
+	private void userEmailIsNull(String email){
+		if(email == null || email.equals("")){
+			log.error("email is null");
+			throw  new RuntimeException("Invalid email");
+		}
+	}
+	private void userIdIsNull(String userId){
+		if(userId == null || userId.equals("")){
+			log.error("userId is null");
+			throw  new RuntimeException("Invalid userId");
+		}
+	}
+	private void userPasswordIsNull(String password){
+		if(password == null || password.equals("")){
+			log.error("password is null");
+			throw  new RuntimeException("Invalid password");
 		}
 	}
 
