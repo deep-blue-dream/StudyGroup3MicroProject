@@ -7,7 +7,6 @@ import dev.study.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-
-    Boolean existsUserByUserMail (String email);
-
+	
+	
 }

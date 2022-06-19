@@ -1,12 +1,7 @@
 package dev.study.service;
 
-
 import java.util.List;
 import java.util.Optional;
-
-
-import dev.study.model.User;
-import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,34 +9,23 @@ import org.springframework.stereotype.Service;
 import dev.study.model.User;
 import dev.study.repository.UserRepository;
 
-import java.util.List;
-
 
 @Service
-@Slf4j
 public class UserServiceImpl implements UserService{
 
-
+	
 	@Autowired
 	private UserRepository repository;
 
 	@Override
 	public List<User> findAll() {
-
+		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
 
 	@Override
 	public User save(User user) {
-		if(user == null || user.getUserMail() == null || user.getUserName() == null || user.getUserPassWord()==null){
-			throw new RuntimeException("Invalid arguments");
-		}
-		final String email = user.getUserMail();
-		System.out.println(email);
-		if(repository.existsUserByUserMail(email)){
-			log.warn("Email already exist >> {}", email);
-			throw new RuntimeException("Email already exists");
-		}
+		// TODO Auto-generated method stub
 		return repository.save(user);
 	}
 
@@ -76,6 +60,3 @@ public class UserServiceImpl implements UserService{
 	}
 	
 }
-
-
-
