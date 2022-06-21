@@ -1,5 +1,6 @@
 package dev.study.service;
 
+
 import dev.study.DTO.UserDTO;
 import dev.study.model.User;
 import dev.study.repository.UserPostRepository;
@@ -81,6 +82,16 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	public User findbyUserId(String userId) {
+		userIdIsNull(userId);
+		if(repository.findUserByUserId(userId) == null){
+			log.error("{} is null" ,userId);
+			throw new RuntimeException("user is null");
+		}
+		return repository.findUserByUserId(userId);
+	}
+
+	@Override
 	public List<User> update(User user) {
 		final Optional<User> foundUser = repository.findById(user.getUserIndex());
 
@@ -97,6 +108,7 @@ public class UserServiceImpl implements UserService{
 
 		return repository.findAll();
 	}
+
 
 	@Override
 	public List<User> delete(Long userId) {

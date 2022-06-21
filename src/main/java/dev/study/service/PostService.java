@@ -1,8 +1,8 @@
 package dev.study.service;
 
-import java.util.List;
-
 import dev.study.model.Post;
+
+import java.util.List;
 
 public interface PostService {
 
@@ -13,5 +13,9 @@ public interface PostService {
 	List<Post> update(Post post);
 
 	List<Post> delete(Long postId);
+
+    Post create(Post post);
+
+	Post findbyPostTitle(String postTitle);
 }
 
