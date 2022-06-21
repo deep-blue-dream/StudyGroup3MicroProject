@@ -1,10 +1,9 @@
 package dev.study.service;
 
-import java.util.List;
-
 import dev.study.DTO.UserDTO;
 import dev.study.model.User;
-import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 
 public interface UserService {
@@ -19,4 +18,6 @@ public interface UserService {
 
 
     User login(UserDTO userDTO);
+
+	User findbyUserId(String userId);
 }

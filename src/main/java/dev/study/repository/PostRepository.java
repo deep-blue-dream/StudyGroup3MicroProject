@@ -8,6 +8,7 @@ import dev.study.model.Post;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-	
-	
+
+
+    Post findPostByPostTitle(String postTitle);
 }

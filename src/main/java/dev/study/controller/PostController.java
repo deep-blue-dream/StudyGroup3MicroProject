@@ -1,19 +1,14 @@
 package dev.study.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import dev.study.DTO.PostDTO;
+import dev.study.DTO.ResponseDTO;
 import dev.study.model.Post;
 import dev.study.service.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/post")
@@ -26,7 +21,29 @@ public class PostController {
 	public List<Post> findAll() {
 		return postService.findAll();
 	}
-	
+	@PostMapping("/create")
+	public ResponseEntity<?> create (@RequestBody PostDTO postDTO){
+		try{
+			Post post = Post.builder()
+					.postDate(postDTO.getPostDate())
+					.postDescription(postDTO.getPostDescription())
+					.postTitle(postDTO.getPostTitle())
+					.build();
+			Post registerPost = postService.create(post);
+			PostDTO responsePostDTO = PostDTO.builder()
+					.postDate(registerPost.getPostDate())
+					.postTitle(registerPost.getPostTitle())
+					.postId(registerPost.getPostId())
+					.postDescription(registerPost.getPostDescription())
+					.build();
+			return ResponseEntity.ok(responsePostDTO);
+
+
+		}catch (Exception e){
+			ResponseDTO responseDTO = ResponseDTO.builder().error(e.getMessage()).build();
+			return  ResponseEntity.badRequest().body(responseDTO);
+		}
+	}
 	// post 요청
 	@PostMapping
 	public Post save(@RequestBody Post post) {
