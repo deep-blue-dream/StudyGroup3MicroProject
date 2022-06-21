@@ -1,6 +1,4 @@
 package dev.study.model;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +15,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Setter @Getter
-@ToString
 @Entity
 public class User {
 
@@ -43,5 +39,19 @@ public class User {
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private List<UserPost> userpost = new ArrayList<>();
-	
+
+	@Override
+	public String toString() {
+		String result = "User{" +
+				"userIndex=" + userIndex +
+				", userId='" + userId + '\'' +
+				", userName='" + userName + '\'' +
+				", userPassWord='" + userPassWord + '\'' +
+				", userMail='" + userMail + '\'' +
+				'}';
+
+
+		return result;
+
+	}
 }

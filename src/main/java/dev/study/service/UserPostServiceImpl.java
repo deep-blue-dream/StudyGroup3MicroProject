@@ -1,10 +1,8 @@
 package dev.study.service;
 
-import java.util.List;
-
+import dev.study.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import dev.study.model.User;
 import dev.study.model.UserPost;
 import dev.study.repository.UserPostRepository;
 
