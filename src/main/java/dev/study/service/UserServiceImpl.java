@@ -1,24 +1,19 @@
 package dev.study.service;
 
+import dev.study.DTO.UserDTO;
+import dev.study.model.User;
+import dev.study.repository.UserPostRepository;
+import dev.study.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
 
 
-import dev.study.DTO.UserDTO;
-import dev.study.controller.UserPostController;
-import dev.study.model.User;
-import dev.study.model.UserPost;
-import dev.study.repository.UserPostRepository;
-import lombok.extern.slf4j.Slf4j;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-
-
-
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService{
 

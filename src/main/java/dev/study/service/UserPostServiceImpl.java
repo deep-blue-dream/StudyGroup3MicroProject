@@ -1,10 +1,8 @@
 package dev.study.service;
 
-import dev.study.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import dev.study.model.UserPost;
 import dev.study.repository.UserPostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserPostServiceImpl implements UserPostService{
 	@Autowired
