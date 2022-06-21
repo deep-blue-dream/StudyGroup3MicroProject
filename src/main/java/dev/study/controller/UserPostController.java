@@ -14,6 +14,7 @@ import dev.study.model.UserPost;
 import dev.study.service.UserPostService;
 @RestController
 @RequestMapping("api/userpost")
+
 public class UserPostController {
 
 	@Autowired // 필드를 통한 인젝션(주입, DI)

@@ -1,5 +1,6 @@
 package dev.study.service;
 
+
 import dev.study.model.Post;
 import dev.study.model.User;
 import dev.study.model.UserPost;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Slf4j
 @Service
+
 public class UserPostServiceImpl implements UserPostService{
 	@Autowired
 	private UserPostRepository repository;

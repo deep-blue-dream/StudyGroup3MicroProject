@@ -1,17 +1,14 @@
 package dev.study.controller;
 
-import java.util.List;
-
 import dev.study.DTO.ResponseDTO;
 import dev.study.DTO.UserDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-
-
 import dev.study.model.User;
 import dev.study.service.UserService;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -81,6 +78,5 @@ public class UserController {
 
 		return userService.delete(userId);
 	}
-
 
 }

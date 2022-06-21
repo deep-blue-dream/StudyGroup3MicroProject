@@ -14,12 +14,11 @@ import java.util.Optional;
 
 
 
-
-@Service
 @Slf4j
+@Service
 public class UserServiceImpl implements UserService{
 
-
+	
 	@Autowired
 	private UserRepository repository;
 	User user;
@@ -29,12 +28,13 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<User> findAll() {
-
+		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
 
 	@Override
 	public User save(User user) {
+
 		final String userEmail = user.getUserMail();
 		final String userPassword = user.getUserPassWord();
 		final String userId = user.getUserId();
@@ -58,7 +58,6 @@ public class UserServiceImpl implements UserService{
 		}catch (RuntimeException e){
 			throw new RuntimeException(e.getMessage());
 		}
-
 
 		return repository.save(user);
 	}
@@ -142,6 +141,3 @@ public class UserServiceImpl implements UserService{
 	}
 
 }
-
-
-
