@@ -4,6 +4,7 @@ import java.util.List;
 
 import dev.study.DTO.ResponseDTO;
 import dev.study.DTO.UserDTO;
+import dev.study.service.UserPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -81,6 +82,5 @@ public class UserController {
 
 		return userService.delete(userId);
 	}
-
 
 }

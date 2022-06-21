@@ -1,8 +1,8 @@
 package dev.study.service;
 
-
 import java.util.List;
 import java.util.Optional;
+
 
 
 import dev.study.DTO.UserDTO;
@@ -12,19 +12,17 @@ import dev.study.model.UserPost;
 import dev.study.repository.UserPostRepository;
 import lombok.extern.slf4j.Slf4j;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import dev.study.repository.UserRepository;
 
 
 
 
 @Service
-@Slf4j
 public class UserServiceImpl implements UserService{
 
-
+	
 	@Autowired
 	private UserRepository repository;
 	User user;
@@ -34,12 +32,13 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<User> findAll() {
-
+		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
 
 	@Override
 	public User save(User user) {
+
 		final String userEmail = user.getUserMail();
 		final String userPassword = user.getUserPassWord();
 		final String userId = user.getUserId();
@@ -63,7 +62,6 @@ public class UserServiceImpl implements UserService{
 		}catch (RuntimeException e){
 			throw new RuntimeException(e.getMessage());
 		}
-
 
 		return repository.save(user);
 	}
@@ -136,6 +134,3 @@ public class UserServiceImpl implements UserService{
 	}
 
 }
-
-
-
