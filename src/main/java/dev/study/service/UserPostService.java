@@ -4,6 +4,6 @@ import dev.study.model.UserPost;
 
 public interface UserPostService {
 
-	UserPost save(UserPost userPost);
+	UserPost userPostSave(Long userIndex, Long postId);
 
 }

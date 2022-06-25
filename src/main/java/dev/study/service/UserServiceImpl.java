@@ -22,7 +22,13 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
-
+	
+	@Override
+	public User findByUserIndex(Long userIndex) {
+		return repository.findByUserIndex(userIndex);
+		
+	}
+	
 	@Override
 	public User save(User user) {
 		// TODO Auto-generated method stub

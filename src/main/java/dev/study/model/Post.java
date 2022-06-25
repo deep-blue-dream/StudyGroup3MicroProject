@@ -10,8 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -46,7 +44,8 @@ public class Post {
 //	@OneToMany(fetch = FetchType.LAZY, targetEntity = User.class)
 //	@JoinColumn(name="user_id")
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "post")
-	private List<UserPost> user = new ArrayList<>();
+	private final List<UserPost> users = new ArrayList<>();
+//	private List<UserPost> UserPosts;
 	
 	
 }

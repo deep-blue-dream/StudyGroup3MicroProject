@@ -1,6 +1,5 @@
 package dev.study.model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +41,6 @@ public class User {
 	private String userMail;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-	private List<UserPost> userpost = new ArrayList<>();
+	private final List<UserPost> posts = new ArrayList<>();
 	
 }
