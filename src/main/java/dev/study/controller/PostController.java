@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/post")
@@ -18,8 +19,10 @@ public class PostController {
 	private PostService postService;
 
 	@GetMapping
-	public List<Post> findAll() {
-		return postService.findAll();
+	public ResponseEntity<?> findAll() {
+		List<Post> posts = postService.findAll();
+		List<PostDTO> postslist = posts.stream().map(PostDTO::new).collect(Collectors.toList());
+		return ResponseEntity.ok(postslist);
 	}
 	@PostMapping("/create")
 	public ResponseEntity<?> create (@RequestBody PostDTO postDTO){
